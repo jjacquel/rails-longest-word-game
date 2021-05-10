@@ -1,0 +1,19 @@
+<h1>Result</h1>
+
+
+<% if @notingrid %>
+  <p>Sorry but <strong><%= @word %></strong> can't be built out of <%= @grid.join(" , ") %></p>
+<% elsif !@englishword %>
+   <p>Sorry but <strong><%= @word %></strong> does not seem to be a valid english word</p>
+<% else %>
+  <p><strong>Congratulations!</strong> <%= @word %> is a valid English word!</p>
+<% end %>
+
+
+<% if !@notingrid && @englishword %>
+  <p>Your score is <%= @sum %></p>
+  <p>Your total score for this session is <%= session[:score] %></p>
+<% end %>
+
+<p><%= link_to "Play again", new_path %> | <%= link_to "Reset", reset_path, method: :patch %> </p>
+
